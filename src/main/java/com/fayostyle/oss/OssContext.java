@@ -1,8 +1,12 @@
 package com.fayostyle.oss;
 
+import com.google.common.base.Strings;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  * @author keith.huang
@@ -44,5 +48,22 @@ public class OssContext {
           this.accessType = accessType;
     }
 
+    public void safeTransportByUrlencode() {
+        try {
+            if (!Strings.isNullOrEmpty(path)) {
+                path = URLEncoder.encode(path, "UTF-8");
+            }
+
+            if(!Strings.isNullOrEmpty(contentType)) {
+                contentType = URLEncoder.encode(contentType, "UTF-8");
+            }
+
+            if(!Strings.isNullOrEmpty(imageStyle)) {
+                imageStyle = URLEncoder.encode(imageStyle, "UTF-8");
+            }
+        } catch (UnsupportedEncodingException e) {
+
+        }
+    }
 
 }

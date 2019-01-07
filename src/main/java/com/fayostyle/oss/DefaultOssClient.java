@@ -25,6 +25,8 @@ public class DefaultOssClient {
 
     private CredentialProvider credentialProvider;
 
+    private RemoteSigner remoteSigner = new RemoteSigner();
+
     public DefaultOssClient(CredentialProvider credentialProvider) {
         this.credentialProvider = credentialProvider;
     }
@@ -103,7 +105,7 @@ public class DefaultOssClient {
     private void uploadByBytes(OssContext ossContext) {
         long startTime = System.currentTimeMillis();
 
-
+        String signResult = remoteSigner.callCommonAuthSignService(ossContext);
     }
 
     private void validate(String accessType, String uploadPath, String serverHost) {
