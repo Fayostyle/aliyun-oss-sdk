@@ -1,5 +1,7 @@
 package com.fayostyle.oss;
 
+import com.fayostyle.oss.util.StringHelper;
+import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Objects;
 
 /**
  * @author keith.huang
@@ -65,5 +68,23 @@ public class OssContext {
 
         }
     }
+
+    public String decodeContentType() {
+        contentType = StringHelper.urlDecode(contentType);
+        return contentType;
+    }
+
+    public boolean isImageStyleNotEmpty() {
+        return !Strings.isNullOrEmpty(imageStyle);
+    }
+
+    public boolean isExpireNotNull() {
+        return !Objects.isNull(expire);
+    }
+
+    public boolean isFileNameAliasNotNull() {
+        return !Objects.isNull(fileNameAlias);
+    }
+
 
 }

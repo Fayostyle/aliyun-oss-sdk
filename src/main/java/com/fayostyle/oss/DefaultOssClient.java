@@ -106,6 +106,13 @@ public class DefaultOssClient {
         long startTime = System.currentTimeMillis();
 
         String signResult = remoteSigner.callCommonAuthSignService(ossContext);
+        if(log.isInfoEnabled()) {
+            long end = System.currentTimeMillis();
+            log.info("本地签名和远程认证耗时, {}, path,{}", end - startTime, ossContext.getPath());
+        }
+
+
+
     }
 
     private void validate(String accessType, String uploadPath, String serverHost) {
