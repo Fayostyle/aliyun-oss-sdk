@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80d9ac39-2a90-4199-a93b-820bf19f283a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/HttpUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/pojo/UploadFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/DefaultOssClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/DefaultOssClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/OssContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/OssContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/RemoteSigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/RemoteSigner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/StringHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/StringHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fayostyle/oss/util/StringHelper.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,19 +26,21 @@
     <session id="498882261">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="class" value="1" />
-          <entry key="java" value="12485" />
+          <entry key="java" value="16630" />
           <entry key="mapping" value="81" />
           <entry key="pom" value="1" />
           <entry key="xml" value="786" />
@@ -48,7 +49,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="12485" />
+          <entry key="JAVA" value="16630" />
           <entry key="PLAIN_TEXT" value="81" />
           <entry key="XML" value="787" />
         </counts>
@@ -56,9 +57,9 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="0-SNAPSHOT" value="2" />
-          <entry key="class" value="6" />
+          <entry key="class" value="7" />
           <entry key="filetype" value="1" />
-          <entry key="java" value="36" />
+          <entry key="java" value="49" />
           <entry key="mapping" value="1" />
           <entry key="pom" value="2" />
           <entry key="tld" value="1" />
@@ -66,8 +67,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="6" />
-          <entry key="JAVA" value="36" />
+          <entry key="CLASS" value="7" />
+          <entry key="JAVA" value="49" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="UML" value="2" />
           <entry key="XML" value="3" />
@@ -80,29 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/OssContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1165">
-              <caret line="88" selection-start-line="88" selection-end-line="88" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0-sources.jar!/com/google/common/base/Preconditions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4246">
-              <caret line="207" column="22" selection-start-line="207" selection-start-column="22" selection-end-line="207" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/RemoteSigner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
+            <state relative-caret-position="-256">
+              <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,10 +91,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/HttpUtils.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/DefaultOssClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+            <state relative-caret-position="756">
+              <caret line="254" column="19" selection-start-line="254" selection-start-column="19" selection-end-line="254" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1019#1020#0" expanded="true" />
+                <element signature="e#1079#1080#0" expanded="true" />
+                <element signature="e#10188#10189#0" expanded="true" />
+                <element signature="e#10243#10244#0" expanded="true" />
+                <element signature="e#10756#10757#0" expanded="true" />
+                <element signature="e#10834#10835#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/pojo/UploadFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,61 +121,68 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/3.8.1/okhttp-3.8.1.jar!/okhttp3/RequestBody.class">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/src.zip!/java/util/concurrent/ExecutorService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+            <state relative-caret-position="-1163">
+              <caret line="136" column="17" selection-start-line="136" selection-start-column="17" selection-end-line="136" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar!/org/slf4j/Logger.class">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/src.zip!/java/lang/Enum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1254">
-              <caret line="60" column="12" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/Logger.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8580">
-              <caret line="422" column="19" selection-start-line="422" selection-start-column="19" selection-end-line="422" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/src.zip!/java/lang/RuntimeException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
+            <state relative-caret-position="289">
+              <caret line="75" column="24" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
               <folding>
-                <element signature="e#1175#1176#0" expanded="true" />
-                <element signature="e#1198#1199#0" expanded="true" />
-                <element signature="e#2364#2365#0" expanded="true" />
-                <element signature="e#2401#2402#0" expanded="true" />
+                <element signature="e#2036#2037#0" expanded="true" />
+                <element signature="e#2063#2064#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/3.8.1/okhttp-3.8.1.jar!/okhttp3/Request.class">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/aliyun/oss/aliyun-sdk-oss/2.6.0/aliyun-sdk-oss-2.6.0-sources.jar!/com/aliyun/oss/OSS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+            <state relative-caret-position="8624">
+              <caret line="419" column="27" selection-start-line="419" selection-start-column="27" selection-end-line="419" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/3.8.1/okhttp-3.8.1.jar!/okhttp3/Call.class">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/aliyun/oss/aliyun-sdk-oss/2.6.0/aliyun-sdk-oss-2.6.0-sources.jar!/com/aliyun/oss/OSSClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="1188">
+              <caret line="127" column="11" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/src.zip!/java/net/URL.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8844">
+              <caret line="429" column="7" selection-start-line="429" selection-start-column="7" selection-end-line="429" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/OssException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/FileUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -218,7 +223,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/support/FileTypePredication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/CredentialProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/SignUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/DefaultOssClient.java" />
         <option value="$PROJECT_DIR$/src/test/java/HH.java" />
         <option value="$PROJECT_DIR$/src/test/java/EnumTest2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/support/SignAlgorithmContext.java" />
@@ -227,6 +231,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/OssContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/HttpUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/RemoteSigner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/pojo/UploadFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fayostyle/oss/DefaultOssClient.java" />
       </list>
     </option>
   </component>
@@ -271,7 +277,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -419,14 +425,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/study/sdk-oss/src/main/java/com/fayostyle/oss/OssContext.java&#10;hmacsha1&#9;FILE&#9;jar://C:/Users/keith.huang/.m2/repository/com/aliyun/oss/aliyun-sdk-oss/2.6.0/aliyun-sdk-oss-2.6.0-sources.jar!/com/aliyun/oss/common/auth/HmacSHA1Signature.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546856839918" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547046599985" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
@@ -556,6 +562,9 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="StructureViewFactory">
+    <option name="AUTOSCROLL_FROM_SOURCE" value="true" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -570,7 +579,9 @@
       <workItem from="1546682172713" duration="3382000" />
       <workItem from="1546825143023" duration="17410000" />
       <workItem from="1546856921341" duration="226000" />
-      <workItem from="1546857250721" duration="2863000" />
+      <workItem from="1546857250721" duration="3120000" />
+      <workItem from="1546911325278" duration="10512000" />
+      <workItem from="1547022072680" duration="9522000" />
     </task>
     <servers />
   </component>
@@ -607,14 +618,14 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43192000" />
+    <option name="totallyTimeSpent" value="63483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26502147" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.30769232" visible="true" weight="0.2725322" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.6923077" side_tool="true" visible="true" weight="0.2725322" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -627,7 +638,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32962137" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32887402" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Statistic" order="9" weight="0.32887402" />
       <window_info anchor="bottom" id="Problems" order="10" />
@@ -646,38 +657,6 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Designer" order="0" />
-      <window_info id="Image Layers" order="1" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.25" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Statistic" order="2" />
-      <window_info anchor="bottom" id="Problems" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="6" weight="0.32998884" />
-      <window_info anchor="bottom" id="Message" order="7" />
-      <window_info anchor="bottom" id="Find" order="8" />
-      <window_info anchor="bottom" id="Run" order="9" visible="true" weight="0.32998884" />
-      <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="13" />
-      <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Maven Projects" order="2" weight="0.3299356" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Commander" order="6" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -690,7 +669,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/DefaultOssClient.java</url>
-          <line>107</line>
+          <line>142</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -839,13 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/FileUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/support/FileTypePredication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
@@ -864,13 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="3" selection-start-line="3" selection-end-line="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/support/ByteOutputStreamWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="36" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -895,13 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/SignUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -981,13 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/OssException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/StringHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
@@ -995,23 +946,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/DefaultOssClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="98" column="45" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0-sources.jar!/com/google/common/base/Preconditions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4246">
-          <caret line="207" column="22" selection-start-line="207" selection-start-column="22" selection-end-line="207" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1063,32 +997,139 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.47/fastjson-1.2.47.jar!/com/alibaba/fastjson/JSONObject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0-sources.jar!/com/google/common/base/Preconditions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="223" column="22" selection-start-line="223" selection-start-column="22" selection-end-line="223" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/support/ByteOutputStreamWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/RemoteSigner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
+        <state relative-caret-position="1496">
+          <caret line="75" column="47" selection-start-line="75" selection-start-column="47" selection-end-line="75" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/SignUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/HttpUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/aliyun/oss/aliyun-sdk-oss/2.6.0/aliyun-sdk-oss-2.6.0-sources.jar!/com/aliyun/oss/OSS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8624">
+          <caret line="419" column="27" selection-start-line="419" selection-start-column="27" selection-end-line="419" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/aliyun/oss/aliyun-sdk-oss/2.6.0/aliyun-sdk-oss-2.6.0-sources.jar!/com/aliyun/oss/OSSClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="127" column="11" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/src.zip!/java/net/URL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8844">
+          <caret line="429" column="7" selection-start-line="429" selection-start-column="7" selection-end-line="429" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/OssException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/src.zip!/java/lang/Enum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="75" column="24" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
+          <folding>
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#2063#2064#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/OssContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1165">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        <state relative-caret-position="-256">
+          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/util/HttpUtils.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/src.zip!/java/util/concurrent/ExecutorService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+        <state relative-caret-position="-1163">
+          <caret line="136" column="17" selection-start-line="136" selection-start-column="17" selection-end-line="136" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/pojo/UploadFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fayostyle/oss/DefaultOssClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="254" column="19" selection-start-line="254" selection-start-column="19" selection-end-line="254" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1019#1020#0" expanded="true" />
+            <element signature="e#1079#1080#0" expanded="true" />
+            <element signature="e#10188#10189#0" expanded="true" />
+            <element signature="e#10243#10244#0" expanded="true" />
+            <element signature="e#10756#10757#0" expanded="true" />
+            <element signature="e#10834#10835#0" expanded="true" />
           </folding>
         </state>
       </provider>

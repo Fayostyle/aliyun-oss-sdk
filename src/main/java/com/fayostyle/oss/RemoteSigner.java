@@ -28,6 +28,8 @@ public class RemoteSigner {
     public final static String EXPIRE_IDENTITY = "expire";
 
     public final static String PARTIAL_CONTENT_DISPOSITION = "attachment;filename=";
+
+
     public String callCommonAuthSignService(OssContext ossContext) {
         String path = ossContext.getPath();
         if(!path.startsWith(StringHelper.SLASH)) {
