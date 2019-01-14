@@ -3,6 +3,11 @@ package com.fayostyle.oss;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.model.OSSObject;
+import com.fayostyle.oss.pojo.BatchSignerDTO;
+import com.fayostyle.oss.pojo.BatchSignerDTO.BatchInfo;
+import com.fayostyle.oss.pojo.PermissionVO;
+import com.fayostyle.oss.pojo.PicMetaInfo;
 import com.fayostyle.oss.pojo.UploadFile;
 import com.fayostyle.oss.support.ByteOutputStreamWrapper;
 import com.fayostyle.oss.support.FileTypePredication;
@@ -19,6 +24,7 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
@@ -208,9 +214,6 @@ public class DefaultOssClient {
         }
     }
 
-
-
-
     private void doOssUpload(SignerResultParser signerResultParser, byte[] file, Map<String, String> reqHeader) {
         long start = System.currentTimeMillis();
 
@@ -234,11 +237,28 @@ public class DefaultOssClient {
      * 下载文件
      * @param accessType
      * @param path
+     * @param expire
+     * @param serverHost
+     * @return 文件的二进制流
+     * @throws IOException
+     */
+    public InputStream downLoadAsStream(String accessType, String path, Long expire, String serverHost) throws IOException {
+        validate(accessType, path, serverHost);
+
+        byte[] file = downLoadAsBytes(accessType, path, expire, serverHost);
+
+        return new ByteArrayInputStream(file);
+    }
+
+    /**
+     * 下载文件
+     * @param accessType
+     * @param path
      * @param expire 持下载链接有效的时间段，单位：秒。如果给定null，则按300秒设定。
      * @param serverHost
-     * @return
+     * @return 文件二进制数组
      */
-    public byte[] downLoadAsBytes(String accessType, String path, Long expire, String serverHost) {
+    public byte[] downLoadAsBytes(String accessType, String path, Long expire, String serverHost) throws IOException {
         validate(accessType, path, serverHost);
 
         OssContext ossContext = new OssContext(credentialProvider, HttpMethod.GET.name(), accessType, serverHost);
@@ -249,11 +269,159 @@ public class DefaultOssClient {
 
     }
 
-    public byte[] downLoadAsBytes(OssContext ossContext) {
+    /**
+     *  指定文件别名进行下载
+     * @param accessType bucket访问类型，公有或者私有，private， public。
+     * @param path       OSS上文件的储存路径
+     * @param expire     设置过期时间
+     * @param serverHost 进行签名授权服务的ip：port
+     * @return
+     */
+    public byte[] downLoadWithFileNameAlias(String accessType, String path, Long expire, String serverHost, String fileNameAlias) throws IOException {
+
+        validate(accessType, path, serverHost);
+        OssContext ossContext = new OssContext(credentialProvider, HttpMethod.GET.name(), accessType, serverHost);
+        ossContext.setFileNameAlias(fileNameAlias);
+        ossContext.setExpire(expire);
+        ossContext.setPath(path);
+
+        return downLoadAsBytes(ossContext);
+    }
+
+    /**
+     * 下载经过裁剪缩放等处理的图片
+     * @param accessType
+     * @param path
+     * @param expire
+     * @param serverHost
+     * @param imgStyle
+     * @return 图片编辑操作的命令格式。
+     *      *  请参照阿里图片处理指南：https://help.aliyun.com/document_detail/44688.html?spm=5176.doc44686.6.944.lflekM
+     * @throws IOException
+     */
+    public byte[] downloadPicStrippedAsBytes(String accessType, String path, Long expire,
+                                             String serverHost, String imgStyle) throws IOException {
+        validate(accessType, path, serverHost);
+
+        OssContext ossContext = new OssContext(credentialProvider, HttpMethod.GET.name(), accessType, serverHost);
+        ossContext.setPath(path);
+        ossContext.setExpire(expire);
+        ossContext.setImageStyle(imgStyle);
+
+        return downLoadAsBytes(ossContext);
+    }
+
+    /**
+     * 获取图片元信息。
+     * @param accessType
+     * @param path
+     * @param serverHost
+     * @return 图片元信息
+     * @throws IOException
+     */
+    public PicMetaInfo acquirePicMetaInfo(String accessType, String path, String serverHost) throws IOException {
+        validate(accessType, path, serverHost);
+
+        final String ALIBABA_IMGINFO_REQUEST_PATTERN = "image/info";
+
+        OssContext ossContext = new OssContext(credentialProvider, HttpMethod.GET.name(), accessType, serverHost);
+        ossContext.setPath(path);
+        ossContext.setImageStyle(ALIBABA_IMGINFO_REQUEST_PATTERN);
+
+        byte[] infoBytes = downLoadAsBytes(ossContext);
+        String imgInfo = new String(infoBytes, Charset.forName("UTF-8"));
+
+
+        return PicMetaInfo.PicMetaInfoParser.parser(imgInfo);
+    }
+
+    /**
+     * 下载文件
+     * @param ossContext
+     * @return 文件二进制流
+     */
+    public byte[] downLoadAsBytes(OssContext ossContext) throws IOException {
         long start = System.currentTimeMillis();
 
         String signResult = remoteSigner.callCommonAuthSignService(ossContext);
-        return null;
+
+        if(log.isInfoEnabled()) {
+            long end = System.currentTimeMillis();
+            log.info("本地签名和远程认证耗时,[{}], path:[{}]", end - start, ossContext.getPath());
+        }
+
+        SignerResultParser signerResultParser = SignerResultParser.create().parse(signResult);
+        if(signerResultParser.isResponseSuccess()) {
+            System.out.println(signerResultParser.getSignedUrl());
+
+            return doOssDownload(signerResultParser, null);
+        } else {
+            String error = signerResultParser.getMessage();
+            log.error("调用签名服务认证异常，信息:", error);
+            throw new OssException("调用签名服务认证异常，信息:" + error);
+        }
+    }
+
+
+    /**
+     * 批量获取下载的签名url
+     * @param signerDTO
+     * @return 签名集合
+     */
+    public List<PermissionVO> acquireDownloadSignedUrls(BatchSignerDTO signerDTO) {
+
+        long start = System.currentTimeMillis();
+
+        String signedUrl = remoteSigner.batchCallCommonAuthSignService(signerDTO, credentialProvider);
+
+        System.out.println(signedUrl);
+        if(log.isInfoEnabled()) {
+            long end = System.currentTimeMillis();
+            log.info("批量获取远程签名耗时:[{}]", end - start);
+        }
+
+        try{
+            List<PermissionVO> vos = JSON.parseArray(signedUrl, PermissionVO.class);
+
+            return vos;
+        } catch (Exception e) {
+            throw new OssException("参数异常: " + signedUrl);
+        }
+
+    }
+
+
+    private byte[] doOssDownload(SignerResultParser signerResultParser, Map<String, String> headers) throws IOException {
+        String signUrl = signerResultParser.getSignedUrl();
+
+        OSSClient ossClient = null;
+        InputStream input = null;
+        try {
+            URL url = new URL(signUrl);
+
+            ossClient = new OSSClient("endpoint.com", "accesskey", "secretkey");
+            OSSObject ossObject = ossClient.getObject(url, headers);
+            input = ossObject.getObjectContent();
+
+            ByteOutputStreamWrapper byteOutputStreamWrapper = FileUtils.transfer2MemoryOutputStream(input);
+            return byteOutputStreamWrapper.acquireZeroCopyBuf();
+
+        } catch (MalformedURLException e) {
+            log.error("下载文件失败，错误信息:[{}]", e.getMessage());
+            throw new OssException("下载文件失败， 错误信息:" + e.getMessage());
+        } catch (IOException e) {
+            log.error("下载文件流转换失败，错误信息:[{}]", e.getMessage());
+            throw new OssException("下载文件流转换失败， 错误信息:" + e.getMessage());
+        } finally {
+            if(input != null) {
+                input.close();
+            }
+
+            if(ossClient != null) {
+                ossClient.shutdown();
+            }
+        }
+
     }
 
     private void validate(String accessType, String uploadPath, String serverHost) {

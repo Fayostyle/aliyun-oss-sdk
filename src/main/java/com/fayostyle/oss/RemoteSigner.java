@@ -1,13 +1,19 @@
 package com.fayostyle.oss;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.fayostyle.oss.pojo.BatchSignerDTO;
+import com.fayostyle.oss.pojo.SignBatchRequest;
 import com.fayostyle.oss.support.SignAlgorithmContext.*;
 import com.fayostyle.oss.support.*;
 import com.fayostyle.oss.util.HttpUtils;
 import com.fayostyle.oss.util.StringHelper;
 import com.fayostyle.oss.util.SignUtils;
+import com.google.common.base.Strings;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 /**
  * @author keith.huang
@@ -22,6 +28,8 @@ public class RemoteSigner {
     public final static String ACCESS_TYPE="accessType";
     public final static String CONTENT_TYPE="contentType";
     public final static String SIGNATURE="signature";
+    public final static String BATCH_SIGN_URI = "/permission/signAll";
+    public final static String SIGN_URI = "/permission/sign";
 
     public final static String IMG_OSS_IDENTITY = "ossProcess";
     public final static String RESPONSE_CONTENT_DISPOSITION = "responseContentDisposition";
@@ -45,6 +53,38 @@ public class RemoteSigner {
         String restfulAPI = buildAccessURL(ossContext);
 
         return HttpUtils.doGet(restfulAPI);
+    }
+
+    public String batchCallCommonAuthSignService(BatchSignerDTO batchSignerDTO, CredentialProvider provider) {
+
+        validate(batchSignerDTO);
+
+        SignBatchRequest signBatchRequest = new SignBatchRequest();
+        signBatchRequest.setAccessType(batchSignerDTO.getAccessType());
+        signBatchRequest.setBizId(provider.getBizId());
+        signBatchRequest.setHttpMethod("GET");
+
+        List<BatchSignerDTO.BatchInfo> infos = batchSignerDTO.getBatchInfos();
+        for(BatchSignerDTO.BatchInfo info : infos) {
+            String signature = createSignature(provider, batchSignerDTO.getAccessType(), info.getPath());
+            SignBatchRequest.UniqueReq uniqueReq = new SignBatchRequest.UniqueReq();
+
+            uniqueReq.setExpire(info.getExpire());
+            uniqueReq.setPath(info.getPath());
+            uniqueReq.setSignature(signature);
+            uniqueReq.setOssProcess(info.getImgStyle());
+
+            String fileNameAlias = info.getFileNameAlias();
+            if(!Strings.isNullOrEmpty(fileNameAlias)) {
+                uniqueReq.setResponseContentDisposition(fileNameAlias);
+            }
+
+            signBatchRequest.getUniqueReqs().add(uniqueReq);
+        }
+
+        String url = SCHEMA + batchSignerDTO.getServerHost() + BATCH_SIGN_URI;
+
+        return HttpUtils.doPost(url, JSONObject.toJSONString(signBatchRequest));
     }
 
     private String createSignature(OssContext ossContext, boolean isUrlEncoded) {
@@ -71,11 +111,22 @@ public class RemoteSigner {
 
     }
 
+    private String createSignature(CredentialProvider provider, String accessType, String path) {
+        OssContext ossContext = new OssContext(provider, accessType, path);
+
+        return createSignature(ossContext, false);
+
+    }
+
+    public void validate(BatchSignerDTO signerDTO) {
+        signerDTO.validateNotEmpty();
+    }
+
     private String buildAccessURL(OssContext ossContext) {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append(SCHEMA).append(ossContext.getServerHost())
+        sb.append(SCHEMA).append(ossContext.getServerHost()).append(SIGN_URI)
                 .append(StringHelper.QUERY_STRING_DILIMETER)
                 .append(BIZ_ID).append(StringHelper.EQUAL).append(ossContext.getCredentialProvider().getBizId())
                 .append(StringHelper.AND)
