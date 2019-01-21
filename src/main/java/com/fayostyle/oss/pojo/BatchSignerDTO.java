@@ -24,7 +24,6 @@ public class BatchSignerDTO {
 
     @Data
     @AllArgsConstructor
-    @NoArgsConstructor
     public static class BatchInfo {
 
         private String path;

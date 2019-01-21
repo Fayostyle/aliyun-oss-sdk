@@ -16,7 +16,6 @@ import java.util.Objects;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class OssContext {
 
     private CredentialProvider credentialProvider;
